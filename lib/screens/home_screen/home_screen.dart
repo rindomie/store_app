@@ -71,7 +71,7 @@ class HomeScreens extends StatelessWidget {
                                   child: Text(
                                     'Varian 1',
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 16),
+                                        color: Colors.black, fontSize: 14),
                                   ),
                                 ),
                                 Center(
@@ -136,11 +136,125 @@ class HomeScreens extends StatelessWidget {
     );
   }
 
+  Widget listTile({IconData icon, String title}) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        size: 32,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.black45),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.amber.shade100,
-      drawer: Drawer(),
+      backgroundColor: Color(0xffcbcbcb),
+      drawer: Drawer(
+        child: Container(
+          color: Color(0xffd1ad17),
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white54,
+                      radius: 43,
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Colors.red,
+                      ),
+                    ),
+                    SizedBox(
+                      // height: 40,
+                      width: 20,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Welcome Guest"),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Container(
+                          height: 30,
+                          width: 80,
+                          child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              side: BorderSide(
+                                width: 2,
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              'Login',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              listTile(icon: Icons.home_outlined, title: "Home"),
+              listTile(icon: Icons.shop_outlined, title: "Keranjang"),
+              listTile(icon: Icons.person_outlined, title: "Profil"),
+              listTile(icon: Icons.notifications_outlined, title: "Notifikasi"),
+              listTile(icon: Icons.star_outline, title: "Rating & Review"),
+              listTile(icon: Icons.favorite_outline, title: "Wishlist"),
+              listTile(icon: Icons.copy_outlined, title: "Keluhan"),
+              listTile(icon: Icons.format_quote_outlined, title: "FAQ"),
+              Container(
+                height: 350,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Kontak Support",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Text("Hubungi Kami"),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(": +628xxxxxxxxxx"),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Text("Email Kami "),
+                          SizedBox(
+                            width: 22,
+                          ),
+                          Text(": email@email.com"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           title: Text(
